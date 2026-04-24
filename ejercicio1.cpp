@@ -2,7 +2,7 @@
 #include <string>
 #include <iostream>
 #include <limits>
-#include "./tads/tablasHash/tablaHashAbierta/tablaHashAbierta.cpp"
+#include "./tads/tablasHash/tablaHashAbierta/tablaHashAbierta.cpp"  
 
 using namespace std;
 
@@ -17,8 +17,9 @@ int ejercicio1(int n, string s) {
             // llave
             string key(1, c); // convertir char → string
 
-            int val;
-            if (tabla.buscar(key, val)) {
+            
+            if (tabla.buscar(key)) {
+                int val= tabla.get(key);
                 tabla.insertar(key, val + 1);
             } else {
                 tabla.insertar(key, 1);
@@ -28,13 +29,11 @@ int ejercicio1(int n, string s) {
             // puerta
             char lower = c - 'A' + 'a';
             string key(1, lower);
-
-            int val;
-            if (tabla.buscar(key, val) && val > 0) {
-                tabla.insertar(key, val - 1); // uso llave
-            } else {
-                cant++; // necesito pedir
-            }
+            
+            int val=tabla.get(key);
+            if (tabla.buscar(key) && val > 0 ) tabla.insertar(key, val - 1); // uso llave
+            else cant++; // necesito pedir
+            
         }
     }
 

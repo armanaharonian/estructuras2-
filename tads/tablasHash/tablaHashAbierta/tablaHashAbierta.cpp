@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include "./table.cpp"
 using namespace std;
 
 struct Nodo {
@@ -38,34 +39,32 @@ public:
     void insertar(string clave, int valor) {
         int pos = hashFunc(clave);
         Nodo* actual = tabla[pos];
-
-        while (actual != nullptr) {
-            if (actual->clave == clave) {
-                actual->valor = valor;
-                return;
-            }
-            actual = actual->sig;
-        }
-
         Nodo* nuevo = new Nodo(clave, valor);
-        nuevo->sig = tabla[pos];
-        tabla[pos] = nuevo;
+        nuevo->sig=actual;
+        tabla[pos] = nuevo; 
     }
 
-    bool buscar(string clave, int &valor) {
+    bool buscar(string clave) {
         int pos = hashFunc(clave);
         Nodo* actual = tabla[pos];
 
         while (actual != nullptr) {
             if (actual->clave == clave) {
-                valor = actual->valor;
                 return true;
             }
             actual = actual->sig;
         }
         return false;
     }
-
+    int get(string clave){
+        int pos = hashFunc(clave);
+        Nodo* actual= tabla[pos];
+        while(actual!= nullptr){
+            if(actual->clave == clave) return actual->valor;
+            else actual=actual->sig;
+        }
+        return -1;
+    }
     void eliminar(string clave) {
         int pos = hashFunc(clave);
         Nodo* actual = tabla[pos];
