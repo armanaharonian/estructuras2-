@@ -2,6 +2,7 @@
 #include <string>
 #include <iostream>
 #include <limits>
+#include <tads/tablasHash/tablaHashAbierta.cpp>
 
 using namespace std;
 
