@@ -2,23 +2,9 @@
 #include <string>
 #include <iostream>
 #include <limits>
-#include <tads/tablasHash/tablaHashAbierta.cpp>
+#include "./tads/tablasHash/tablaHashAbierta/tablaHashAbierta.cpp"
 
 using namespace std;
-
-int main()
-{
-    int n;
-    cin >> n;
-
-    string s;
-    cin >> s;
-
-    /*cout << "n = " << n << endl;
-    cout << "s = " << s << endl;*/
-
-    return 0;
-}
 
 int ejercicio1(int n, string s) {
     TablaHash tabla(26);
@@ -94,3 +80,13 @@ int ejercicio1(int n, string s) {
 
     return llavesSolicitadas;
 }*/
+int main()
+{
+   int n;
+    cin >> n;
+
+    string s;
+    cin >> s;
+    cout << ejercicio1(n,s) << endl; 
+}
+
